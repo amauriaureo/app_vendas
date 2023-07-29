@@ -9,9 +9,15 @@ class ClienteAdmin(admin.ModelAdmin):
     search_fields = ['nome', 'email', 'cpf']
 
 
+class ItemInline(admin.StackedInline):
+    model = ItemPedido
+    extra = 1
+
+
 class PedidoAdmin(admin.ModelAdmin):
 
     list_display = ['cliente', 'data']
+    inlines = [ItemInline]
 
 
 class ItemAdmin(admin.ModelAdmin):
